@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Propuesta Sanamente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout: single calm column, a breathing hero, then a practice-like sequence of sections ending in an interactive investment "mat" */
+:root{
+  --bg:#EDF0EA; --surface:#F8F9F5; --ink:#2B2540; --muted:#625D72; --line:#D3D9CF;
+  --sage:#5E7F69; --sage-soft:#DCE5DB; --saffron:#B8681F; --saffron-soft:#F3E2CC; --plum:#7A6A9B; --plum-soft:#E4E0EC;
+  --display:"Marcellus", "Iowan Old Style", Georgia, serif;
+  --body:"Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#16141D; --surface:#201D29; --ink:#ECE8F2; --muted:#AAA4B9; --line:#34303F;
+  --sage:#93B79E; --sage-soft:#24302A; --saffron:#EBA661; --saffron-soft:#3A2B1C; --plum:#B3A5D6; --plum-soft:#2A2636; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16141D; --surface:#201D29; --ink:#ECE8F2; --muted:#AAA4B9; --line:#34303F;
+  --sage:#93B79E; --sage-soft:#24302A; --saffron:#EBA661; --saffron-soft:#3A2B1C; --plum:#B3A5D6; --plum-soft:#2A2636; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.5rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sage)}
+.lead{color:var(--muted);max-width:62ch;font-size:1.05rem}
+section{padding-block:clamp(48px,8vw,88px);border-top:1px solid var(--line);display:grid;gap:28px}
+.sec-head{display:grid;gap:10px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Yoga figures */
+.fig{display:block;color:var(--sage)}
+.fig.s{color:var(--saffron)} .fig.p{color:var(--plum)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:56px 64px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.4rem);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--saffron)}
+.hero-copy{display:grid;gap:20px;min-width:0}
+.meta{color:var(--muted);font-size:.9rem}
+.facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:grid;gap:2px;min-width:150px;flex:1}
+.fact b{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.fact span{font-size:.8rem;color:var(--muted)}
+.breath{position:relative;aspect-ratio:1;max-width:360px;width:100%;justify-self:center;display:grid;place-items:center}
+.ring{position:absolute;border-radius:50%;inset:0;border:1px solid var(--sage);opacity:.35;transform:scale(.62);animation:breathe 10s ease-in-out infinite}
+.ring:nth-child(2){animation-delay:.25s;opacity:.25;border-color:var(--saffron)}
+.ring:nth-child(3){animation-delay:.5s;opacity:.18}
+.core{width:50%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--saffron-soft),var(--sage-soft));display:grid;place-items:center;align-content:center;text-align:center;gap:0;animation:core 10s ease-in-out infinite}
+.core svg{width:62%;height:auto}
+.core span{font-family:var(--display);font-size:1rem;margin-top:-4px}
+@keyframes breathe{0%,100%{transform:scale(.62)}45%,55%{transform:scale(1)}}
+@keyframes core{0%,100%{transform:scale(.92)}45%,55%{transform:scale(1.06)}}
+
+/* DIAGNÓSTICO */
+.diag{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin:0}
+.diag div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line);display:grid;gap:6px;min-width:0;align-content:start}
+.diag dt{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.diag dd{margin:0}
+.strip{display:grid;gap:14px;justify-items:center;padding-top:8px}
+.strip-figs{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(10px,4vw,40px)}
+.strip-figs svg{width:clamp(64px,12vw,100px);height:auto}
+.strip-figs svg:nth-child(odd){animation:sway 6s ease-in-out infinite}
+.strip-figs svg:nth-child(even){animation:sway 6s ease-in-out infinite reverse}
+.strip p{font-family:var(--display);font-size:clamp(1.2rem,3vw,1.5rem);text-align:center;color:var(--muted)}
+@keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+/* OBJETIVOS */
+.goals{list-style:none;padding:0;margin:0;display:grid;gap:0;counter-reset:g}
+.goals li{counter-increment:g;display:grid;grid-template-columns:56px 1fr;gap:12px;padding-block:16px;border-bottom:1px solid var(--line)}
+.goals li::before{content:counter(g);font-family:var(--display);font-size:1.6rem;color:var(--saffron);line-height:1}
+
+/* PILARES */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:10px;align-content:start}
+.pillar svg{width:34px;height:34px;color:var(--sage)}
+.pillar p{color:var(--muted);font-size:.93rem}
+
+/* FASES */
+.timeline{display:grid;grid-template-columns:3fr 9fr 9fr 6fr;gap:6px}
+.tl-btn{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;display:grid;gap:2px;transition:background .2s,border-color .2s;min-width:0}
+.tl-btn small{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.tl-btn span{font-family:var(--display);font-size:1.05rem;overflow-wrap:anywhere}
+.tl-btn[aria-selected="true"]{background:var(--sage-soft);border-color:var(--sage)}
+.tl-btn.opt{border-style:dashed}
+.phase-panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);display:grid;grid-template-columns:auto 1fr 1.3fr;gap:28px;align-items:start}
+.phase-fig{width:110px;height:auto;animation:fade .5s ease}
+.phase-panel ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.phase-panel li::marker{color:var(--saffron)}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--saffron-soft);color:var(--saffron);justify-self:start}
+@keyframes fade{from{opacity:.2;transform:translateY(6px)}to{opacity:1;transform:none}}
+.how{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.how div{padding:18px;border-radius:16px;background:var(--plum-soft);display:grid;gap:6px}
+.how b{font-family:var(--display);font-weight:400;font-size:1.15rem}
+
+/* INVERSIÓN */
+.invest{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:start}
+.controls{display:grid;gap:22px;min-width:0}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.plan{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:20px;padding:22px;cursor:pointer;display:grid;gap:10px;align-content:start;transition:border-color .2s,box-shadow .2s}
+.plan[aria-checked="true"]{border-color:var(--saffron);box-shadow:0 0 0 3px var(--saffron-soft)}
+.plan .price{font-family:var(--display);font-size:1.9rem}
+.plan .price small{font-family:var(--body);font-size:.8rem;color:var(--muted)}
+.plan ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.92rem;display:grid;gap:4px}
+.plan .badge{position:absolute;top:-11px;right:16px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--saffron);color:var(--bg);padding:3px 10px;border-radius:99px}
+.mix{display:flex;gap:4px;height:8px;border-radius:99px;overflow:hidden}
+.mix i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.78rem;color:var(--muted)}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:8px 16px;border-radius:99px;cursor:pointer;font-weight:600;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.group-label{font-weight:700;font-size:.9rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.group-label span{font-weight:400;color:var(--muted);font-size:.85rem}
+.gift{display:flex;gap:12px;align-items:center;background:var(--saffron-soft);border-radius:14px;padding:12px 16px;font-size:.92rem}
+.gift b{color:var(--saffron)}
+.addons{display:grid;gap:0;border-top:1px solid var(--line)}
+.addon{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.addon input[type=checkbox]{width:20px;height:20px;accent-color:var(--saffron)}
+.addon label{cursor:pointer;min-width:0}
+.addon label small{display:block;color:var(--muted);font-size:.82rem}
+.addon .val{font-size:.88rem;color:var(--muted);text-align:right}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.stepper button{border:0;background:var(--surface);width:34px;height:34px;cursor:pointer;font-size:1.1rem}
+.stepper output{min-width:28px;text-align:center;font-weight:700}
+.pauta-row{display:none;grid-column:2 / -1;gap:8px;align-items:center;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+.pauta-row.on{display:flex}
+.pauta-row input{width:140px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+.summary{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 16px);background:var(--sage-soft);border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;gap:16px}
+.sum-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sum-head svg{width:64px;height:auto;flex:none}
+.total{font-family:var(--display);font-size:clamp(2rem,5vw,2.5rem);line-height:1.1}
+.total small{font-family:var(--body);font-size:.9rem;color:var(--muted)}
+.summary dl{margin:0;display:grid;gap:8px;font-size:.9rem}
+.summary dl div{display:flex;justify-content:space-between;gap:12px}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;text-align:right;font-weight:600}
+.summary s{color:var(--muted);font-weight:400;margin-right:6px}
+.summary hr{border:0;border-top:1px solid var(--line);margin:0;width:100%}
+.note{background:var(--surface);padding:10px 12px;border-radius:12px;font-size:.88rem}
+.copy{border:0;background:var(--ink);color:var(--bg);border-radius:99px;padding:12px 18px;font-weight:700;cursor:pointer}
+.fine{font-size:.78rem;color:var(--muted)}
+#copied{font-size:.85rem}
+
+/* JUSTIFICACIÓN */
+.acc{display:grid;border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{cursor:pointer;list-style:none;padding-block:18px;display:flex;justify-content:space-between;gap:16px;font-family:var(--display);font-size:1.15rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";color:var(--saffron);font-family:var(--body);font-size:1.4rem;line-height:1}
+.acc details[open] summary::after{content:"–"}
+.acc details p{padding-bottom:18px;color:var(--muted);max-width:68ch}
+
+/* CONDICIONES */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cond{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.cond li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.cond li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sage);margin-top:.6em}
+.steps{display:grid;gap:10px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;cursor:pointer}
+.step input{width:20px;height:20px;accent-color:var(--sage);margin-top:2px}
+.step:has(input:checked) span{text-decoration:line-through;color:var(--muted)}
+footer{padding-block:40px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+footer b{font-family:var(--display);font-weight:400;color:var(--ink);font-size:1.2rem}
+.foot-figs{display:flex;gap:10px;align-items:flex-end}
+.foot-figs svg{width:44px;height:auto}
+
+@media (max-width:860px){
+  .hero,.invest,.two{grid-template-columns:1fr}
+  .phase-panel{grid-template-columns:auto 1fr}
+  .phase-panel ul{grid-column:1 / -1}
+  .breath{max-width:280px;grid-row:1}
+  .pillars{grid-template-columns:1fr 1fr}
+  .diag{grid-template-columns:1fr 1fr}
+  .summary{position:static}
+  .timeline{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .pillars,.diag,.plans,.how{grid-template-columns:1fr}
+  .goals li{grid-template-columns:40px 1fr}
+  .phase-fig{width:80px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ring,.core,.strip-figs svg,.phase-fig{animation:none}.ring{transform:scale(.85)}
+}
+</style>
+
+</head>
+<body>
+<!-- Yoga figure sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="f-seated" viewBox="0 0 100 110">
+      <path d="M14 103 H86" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 52 L50 78"/><path d="M50 58 Q36 66 30 84"/><path d="M50 58 Q64 66 70 84"/>
+        <path d="M22 92 Q50 78 78 92"/><path d="M28 90 Q50 102 72 90"/>
+      </g>
+      <circle cx="50" cy="40" r="9" style="fill:var(--saffron)"/>
+    </symbol>
+    <symbol id="f-open" viewBox="0 0 100 110">
+      <path d="M14 103 H86" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 30 L50 64"/><path d="M50 38 L28 16"/><path d="M50 38 L72 16"/>
+        <path d="M50 64 L40 98"/><path d="M50 64 L60 98"/>
+      </g>
+      <circle cx="50" cy="17" r="9" style="fill:var(--saffron)"/>
+    </symbol>
+    <symbol id="f-tree" viewBox="0 0 100 110">
+      <path d="M14 103 H86" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 36 L50 66"/><path d="M50 40 Q36 24 47 6"/><path d="M50 40 Q64 24 53 6"/>
+        <path d="M50 66 L50 99"/><path d="M50 66 L68 78 L53 86"/>
+      </g>
+      <circle cx="50" cy="24" r="9" style="fill:var(--saffron)"/>
+    </symbol>
+    <symbol id="f-warrior" viewBox="0 0 100 110">
+      <path d="M8 103 H92" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 32 L50 62"/><path d="M8 42 L92 42"/>
+        <path d="M50 62 L74 76 L76 99"/><path d="M50 62 L22 99"/>
+      </g>
+      <circle cx="50" cy="20" r="9" style="fill:var(--saffron)"/>
+    </symbol>
+    <symbol id="f-chair" viewBox="0 0 100 110">
+      <path d="M14 103 H86" style="stroke:var(--line)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="var(--muted)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".55">
+        <path d="M28 40 L28 100"/><path d="M28 70 L62 70 L62 100"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 38 L40 66"/><path d="M40 44 Q58 30 66 12"/><path d="M40 66 L64 66 L66 99"/>
+      </g>
+      <circle cx="40" cy="26" r="9" style="fill:var(--saffron)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Propuesta comercial y económica · Sanamente</p>
+    <h1>Un nuevo comienzo para <em>Sanamente</em></h1>
+    <p class="lead">Una estrategia orgánica de seis meses para que Rosa vuelva a conectar con su comunidad en Instagram y Facebook y empiece a ofrecer sus clases y sesiones.</p>
+    <p class="meta">9 de noviembre de 2026 · Vigente hasta el 9 de diciembre de 2026</p>
+    <div class="facts">
+      <div class="fact"><b>6 meses</b><span>Crecimiento orgánico</span></div>
+      <div class="fact"><b>Instagram + Facebook</b><span>Publicación espejo</span></div>
+      <div class="fact"><b>WhatsApp Business</b><span>Canal de reservas</span></div>
+    </div>
+  </div>
+  <div class="breath" aria-hidden="true">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+    <div class="core"><svg class="fig"><use href="#f-seated"/></svg><span id="breathWord">Inhala</span></div>
+  </div>
+</header>
+
+<section id="diagnostico">
+  <div class="sec-head">
+    <p class="eyebrow">Contexto y diagnóstico</p>
+    <h2>Dónde está Sanamente hoy</h2>
+  </div>
+  <dl class="diag">
+    <div><dt>Quién es</dt><dd>Instructora de yoga formada en Cartagena, hoy en Bogotá. Enfoque integral: yoga, alimentación, sueño, autoconocimiento y cábala.</dd></div>
+    <div><dt>Punto de partida</dt><dd>Logo y marca listos. La cuenta lleva unos 2 años inactiva y conserva unos cientos de seguidores entre Sanamente y su perfil personal.</dd></div>
+    <div><dt>Público principal</dt><dd>Mujeres adultas, incluidas quienes tienen molestias físicas o edad avanzada y se sienten fuera del yoga “de cuerpos flexibles”.</dd></div>
+    <div><dt>Retos</dt><dd>Poca experiencia grabando y editando, sin apoyo permanente para producir y con muchos temas que hay que ordenar en un mensaje claro.</dd></div>
+    <div><dt>Preferencias</dt><dd>Crecimiento orgánico, equilibrado y realista. Disposición a esperar 5 a 6 meses. Instagram y Facebook primero, YouTube después.</dd></div>
+    <div><dt>Oportunidad</dt><dd>Un regreso contado en primera persona y el encuentro con amigas como primer contenido real.</dd></div>
+  </dl>
+  <div class="strip" aria-hidden="true">
+    <div class="strip-figs">
+      <svg class="fig"><use href="#f-chair"/></svg>
+      <svg class="fig s"><use href="#f-tree"/></svg>
+      <svg class="fig p"><use href="#f-seated"/></svg>
+      <svg class="fig"><use href="#f-warrior"/></svg>
+      <svg class="fig s"><use href="#f-open"/></svg>
+    </div>
+    <p>Yoga para todas las edades y todos los cuerpos</p>
+  </div>
+</section>
+
+<section id="objetivos">
+  <div class="sec-head">
+    <p class="eyebrow">Objetivos</p>
+    <h2>En 6 meses, una marca activa, coherente y lista para vender</h2>
+  </div>
+  <ol class="goals">
+    <li><p>Reactivar y optimizar Instagram y Facebook con una identidad visual alineada a la marca existente.</p></li>
+    <li><p>Publicar con constancia, 2 a 3 veces por semana, con un mensaje claro: bienestar integral para todas las edades y cuerpos.</p></li>
+    <li><p>Construir comunidad y confianza de forma orgánica, sin pauta en la fase inicial.</p></li>
+    <li><p>Llevar a las interesadas a WhatsApp Business como canal de reservas de clases, sesiones y futuros retiros.</p></li>
+    <li><p>Dejar listas las bases para YouTube y una página de reservas con pasarela de pago a partir del mes 7.</p></li>
+  </ol>
+</section>
+
+<section id="pilares">
+  <div class="sec-head">
+    <p class="eyebrow">Pilares de contenido</p>
+    <h2>Cuatro temas que ordenan todo lo que Rosa sabe</h2>
+  </div>
+  <div class="pillars">
+    <article class="pillar">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="6" r="3"/><path d="M16 10v9M8 14l8 3 8-3M10 27l6-8 6 8"/></svg>
+      <h3>Movimiento y yoga terapéutico</h3>
+      <p>Posturas adaptadas, movilidad y alivio de molestias para cuerpos reales.</p>
+    </article>
+    <article class="pillar">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 6a9 9 0 1 0 4 14A10 10 0 0 1 22 6z"/><path d="M6 26h20"/></svg>
+      <h3>Alimentación y descanso</h3>
+      <p>Hábitos de comida y sueño explicados de forma simple y cercana.</p>
+    </article>
+    <article class="pillar">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="16" r="10"/><circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="1" fill="currentColor"/></svg>
+      <h3>Mente y autoconocimiento</h3>
+      <p>Respiración, yoga nidra, reflexión y la mirada de la cábala.</p>
+    </article>
+    <article class="pillar">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 8h14a6 6 0 0 1 6 6v12H12a6 6 0 0 1-6-6z"/><path d="M11 14h10M11 19h7"/></svg>
+      <h3>Historia personal</h3>
+      <p>La voz de Rosa: su regreso, su comunidad y sus amigas.</p>
+    </article>
+  </div>
+</section>
+
+<section id="fases">
+  <div class="sec-head">
+    <p class="eyebrow">Estrategia y fases</p>
+    <h2>Una práctica en cuatro momentos</h2>
+    <p class="lead">Toca cada fase para ver lo que incluye. El ancho de cada fase muestra su duración.</p>
+  </div>
+  <div class="how">
+    <div><b>Cocreación y dirección remota</b><p>Rosa graba con su iPhone siguiendo guiones y guías. Nosotros planificamos, editamos, publicamos y medimos.</p></div>
+    <div><b>Estrategia espejo</b><p>Cada publicación sale igual en Instagram y en Facebook, con un solo esfuerzo de producción.</p></div>
+  </div>
+  <div class="timeline" role="tablist" aria-label="Fases del proyecto">
+    <button class="tl-btn" role="tab" id="tab-0" aria-selected="true" aria-controls="phasePanel" data-i="0"><small>Sem. 1–3</small><span>Arranque</span></button>
+    <button class="tl-btn" role="tab" id="tab-1" aria-selected="false" aria-controls="phasePanel" data-i="1"><small>Meses 1–3</small><span>Relanzamiento</span></button>
+    <button class="tl-btn" role="tab" id="tab-2" aria-selected="false" aria-controls="phasePanel" data-i="2"><small>Meses 4–6</small><span>Consolidación</span></button>
+    <button class="tl-btn opt" role="tab" id="tab-3" aria-selected="false" aria-controls="phasePanel" data-i="3"><small>Mes 7 +</small><span>Expansión</span></button>
+  </div>
+  <div class="phase-panel" id="phasePanel" role="tabpanel" aria-live="polite">
+    <svg class="fig phase-fig" id="phFig" aria-hidden="true"><use href="#f-seated"/></svg>
+    <div style="display:grid;gap:10px;align-content:start;min-width:0">
+      <span class="tag" id="phTag"></span>
+      <h3 id="phTitle" style="font-size:1.7rem"></h3>
+      <p id="phDesc" style="color:var(--muted)"></p>
+    </div>
+    <ul id="phList"></ul>
+  </div>
+</section>
+
+<section id="inversion">
+  <div class="sec-head">
+    <p class="eyebrow">Propuesta económica</p>
+    <h2>Elige cómo quieres avanzar</h2>
+    <p class="lead">Recomendamos el plan Crecimiento. Elige plan, modalidad y servicios adicionales para ver tu valor mensual. Valores en pesos colombianos, antes de impuestos.</p>
+  </div>
+  <div class="invest">
+    <div class="controls">
+      <div class="plans" role="radiogroup" aria-label="Plan mensual">
+        <button class="plan" role="radio" aria-checked="false" data-plan="esencial">
+          <h3>Esencial</h3>
+          <div class="price num">$1.200.000 <small>/ mes</small></div>
+          <div class="mix" aria-hidden="true"><i style="flex:4;background:var(--saffron)"></i><i style="flex:4;background:var(--sage)"></i></div>
+          <div class="legend"><span><i style="background:var(--saffron)"></i>4 reels</span><span><i style="background:var(--sage)"></i>4 carruseles</span></div>
+          <ul><li>8 publicaciones al mes</li><li>Parrilla, guiones y edición</li><li>Publicación espejo</li><li>Reporte mensual</li></ul>
+        </button>
+        <button class="plan" role="radio" aria-checked="true" data-plan="crecimiento">
+          <span class="badge">Recomendado</span>
+          <h3>Crecimiento</h3>
+          <div class="price num">$1.600.000 <small>/ mes</small></div>
+          <div class="mix" aria-hidden="true"><i style="flex:6;background:var(--saffron)"></i><i style="flex:4;background:var(--sage)"></i><i style="flex:2;background:var(--plum)"></i></div>
+          <div class="legend"><span><i style="background:var(--saffron)"></i>6 reels</span><span><i style="background:var(--sage)"></i>4 carruseles</span><span><i style="background:var(--plum)"></i>2 posts</span></div>
+          <ul><li>12 publicaciones al mes</li><li>Todo lo de Esencial</li><li>1 videollamada de dirección por semana</li><li>Guía de historias</li><li>Respuesta básica a comentarios</li></ul>
+        </button>
+      </div>
+
+      <div style="display:grid;gap:10px">
+        <div class="group-label">Modalidad</div>
+        <div class="seg" role="group" aria-label="Modalidad de pago">
+          <button aria-pressed="true" data-mode="mensual">Mensual · arranque gratis</button>
+          <button aria-pressed="false" data-mode="semestral">Semestral · 10% menos al mes</button>
+        </div>
+        <div class="gift" id="giftNote"></div>
+      </div>
+
+      <div style="display:grid;gap:6px">
+        <div class="group-label">Servicios adicionales <span>Opcionales, cuando se necesiten</span></div>
+        <div class="addons">
+          <div class="addon">
+            <input type="checkbox" id="ad-yt">
+            <label for="ad-yt">Apertura y optimización de canal de YouTube<small>Pago único</small></label>
+            <span class="val num">$700.000</span>
+          </div>
+          <div class="addon">
+            <span class="stepper" aria-label="Videos largos"><button type="button" data-step="vid" data-d="-1" aria-label="Quitar un video">−</button><output id="vidN" class="num">0</output><button type="button" data-step="vid" data-d="1" aria-label="Agregar un video">+</button></span>
+            <label>Edición de video largo para YouTube<small>Hasta 15 min · $250.000 por video</small></label>
+            <span class="val num" id="vidVal">$0</span>
+          </div>
+          <div class="addon">
+            <input type="checkbox" id="ad-web">
+            <label for="ad-web">Página de reservas con pasarela de pago<small>Pago único</small></label>
+            <span class="val num">$1.800.000</span>
+          </div>
+          <div class="addon">
+            <span class="stepper" aria-label="Eventos"><button type="button" data-step="evt" data-d="-1" aria-label="Quitar un evento">−</button><output id="evtN" class="num">0</output><button type="button" data-step="evt" data-d="1" aria-label="Agregar un evento">+</button></span>
+            <label>Kit de difusión para un retiro o evento<small>$500.000 por evento</small></label>
+            <span class="val num" id="evtVal">$0</span>
+          </div>
+          <div class="addon">
+            <input type="checkbox" id="ad-pauta">
+            <label for="ad-pauta">Estrategia y gestión de pauta<small>15% de la inversión en anuncios, mínimo $400.000 al mes</small></label>
+            <span class="val num" id="pautaVal">—</span>
+            <div class="pauta-row" id="pautaRow">
+              <label for="pautaInv">Inversión en anuncios al mes</label>
+              <input id="pautaInv" type="number" min="0" step="100000" value="2000000" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="summary" aria-live="polite">
+      <div class="sum-head">
+        <div style="display:grid;gap:6px">
+          <p class="eyebrow">Tu inversión mensual</p>
+          <div class="total num"><span id="monthly"></span> <small>/ mes</small></div>
+          <p class="fine" id="planLine"></p>
+        </div>
+        <svg class="fig s" aria-hidden="true"><use href="#f-tree"/></svg>
+      </div>
+      <dl>
+        <div><dt>Fase 0 · Arranque</dt><dd class="num" id="arrVal"></dd></div>
+        <div id="pautaSum" hidden><dt>Gestión de pauta</dt><dd class="num" id="pautaSumVal"></dd></div>
+        <div id="addRow" hidden><dt>Adicionales (pago único)</dt><dd class="num" id="addTotal"></dd></div>
+      </dl>
+      <p class="note" id="startNote"></p>
+      <hr>
+      <dl>
+        <div><dt>Mensualidad</dt><dd>Mes completo, por anticipado</dd></div>
+        <div><dt>Fecha de pago</dt><dd>Días 1 a 5 de cada mes</dd></div>
+      </dl>
+      <button class="copy" id="copyBtn" type="button">Copiar resumen para WhatsApp</button>
+      <p id="copied" role="status"></p>
+      <textarea id="copyFallback" hidden readonly rows="6" style="width:100%;border-radius:10px;padding:8px;font:inherit;font-size:.8rem;background:var(--surface);color:var(--ink);border:1px solid var(--line)"></textarea>
+      <p class="fine">Equipo básico que Rosa compra directamente: trípode con aro de luz y micrófono de solapa, entre $200.000 y $300.000.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="justificacion">
+  <div class="sec-head">
+    <p class="eyebrow">Justificación de los valores</p>
+    <h2>Bueno, bonito y a buen precio</h2>
+    <p class="lead">Precios justos para un emprendimiento que arranca y sostenibles para un trabajo profesional.</p>
+  </div>
+  <div class="acc">
+    <details open><summary>Arranque de $900.000, gratis con plan mensual</summary><p>Son unas 15 a 18 horas de trabajo único: auditoría, recuperación de accesos, configuración de WhatsApp Business y el manual de grabación. Si contratas de forma mensual, va incluido sin costo y solo pagas el primer mes.</p></details>
+    <details><summary>Esencial a $1.200.000</summary><p>8 piezas a unos $150.000 cada una, con estrategia, guion y edición incluidos. Es el mínimo para publicar 2 veces por semana, la frecuencia necesaria para que el algoritmo y la comunidad la vuelvan a ver.</p></details>
+    <details><summary>Crecimiento a $1.600.000</summary><p>50% más contenido por un 33% más de inversión. La videollamada semanal compensa que Rosa no tiene apoyo técnico en casa y es lo que más acelera su autonomía grabando.</p></details>
+    <details><summary>Sin pauta al inicio</summary><p>Coincide con la preferencia orgánica de Rosa. Primero se construye contenido y confianza; después se invierte en anuncios sobre lo que ya funciona.</p></details>
+    <details><summary>Compromiso semestral con 10% de descuento</summary><p>La estrategia orgánica muestra resultados a partir del mes 6, y un plazo más corto no permite evaluarla bien. Quien se compromete por 6 meses paga 10% menos cada mes.</p></details>
+    <details><summary>Por qué no es más barato</summary><p>No incluye solo publicar: incluye dirección creativa remota. Un videógrafo presencial en Bogotá costaría aparte en cada sesión, y la cocreación con su iPhone evita ese costo.</p></details>
+  </div>
+</section>
+
+<section id="condiciones">
+  <div class="two">
+    <div style="display:grid;gap:18px;align-content:start">
+      <p class="eyebrow">Condiciones</p>
+      <h2>Acuerdos claros</h2>
+      <ul class="cond">
+        <li><p>Cada mensualidad se paga completa y por anticipado, los primeros 5 días de cada mes.</p></li>
+        <li><p>Con plan mensual, la Fase 0 de arranque va incluida sin costo: para iniciar solo se paga el primer mes.</p></li>
+        <li><p>Rosa entrega el material en crudo con 7 días de anticipación al mes planificado.</p></li>
+        <li><p>Incluye 2 rondas de ajustes por pieza.</p></li>
+        <li><p>El plan puede subir o bajar de nivel con aviso de 15 días.</p></li>
+        <li><p>Propuesta vigente por 30 días.</p></li>
+      </ul>
+    </div>
+    <div style="display:grid;gap:18px;align-content:start">
+      <p class="eyebrow">Próximos pasos</p>
+      <h2>Para empezar</h2>
+      <div class="steps">
+        <label class="step"><input type="checkbox" id="st-1"><span>Reunión para revisar la propuesta y ajustar observaciones.</span></label>
+        <label class="step"><input type="checkbox" id="st-2"><span>Rosa elige plan y modalidad (mensual o semestral).</span></label>
+        <label class="step"><input type="checkbox" id="st-3"><span>Recuperar usuario y clave de Sanamente con su nuera.</span></label>
+        <label class="step"><input type="checkbox" id="st-4"><span>Pago del primer mes e inicio de la Fase 0.</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><b>Sanamente</b><br>Bienestar integral para todas las edades y cuerpos.<br>Propuesta del 9 de noviembre de 2026 · Valores en COP, antes de impuestos</div>
+  <div class="foot-figs" aria-hidden="true">
+    <svg class="fig"><use href="#f-open"/></svg>
+    <svg class="fig s"><use href="#f-seated"/></svg>
+    <svg class="fig p"><use href="#f-tree"/></svg>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  const fmt = n => "$" + Math.round(n).toLocaleString("es-CO");
+  const $ = s => document.querySelector(s);
+
+  /* Breathing word */
+  const word = $("#breathWord");
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let t = 0;
+    setInterval(() => { t = (t + 1) % 4; word.textContent = ["Inhala","Sostén","Exhala","Suelta"][t]; }, 2500);
+  } else { word.textContent = "Respira"; }
+
+  /* Phases */
+  const phases = [
+    {fig:"f-seated", cls:"", tag:"Semanas 1 a 3", title:"Fase 0 · Arranque", desc:"Preparamos todo antes de volver a publicar: cuentas, perfiles, canal de reservas y el manual para grabar con confianza.",
+     items:["Auditoría de las cuentas Sanamente y personal; recuperación de accesos.","Optimización de perfiles: biografía, foto, destacadas, enlace y conexión Instagram–Facebook en Meta.","WhatsApp Business: catálogo de servicios, mensaje de bienvenida y respuestas rápidas.","Pilares de contenido: movimiento y yoga terapéutico, alimentación y descanso, mente y autoconocimiento, historia personal.","Manual de grabación: luz natural, altura del celular, modos del iPhone, sonido y lista de compra básica (trípode, aro de luz, micrófono de solapa)."]},
+    {fig:"f-open", cls:"s", tag:"Meses 1 a 3", title:"Fase 1 · Relanzamiento", desc:"Rosa vuelve contando su propia historia y su comunidad la acompaña.",
+     items:["Narrativa de regreso: qué la llevó a hacer una pausa y qué viene ahora.","Guía para registrar el encuentro con amigas como contenido de comunidad.","Parrilla mensual, guiones, edición de reels y carruseles, publicación y reporte mensual."]},
+    {fig:"f-tree", cls:"p", tag:"Meses 4 a 6", title:"Fase 2 · Consolidación", desc:"La comunidad conversa, confía y empieza a reservar.",
+     items:["Transmisiones en vivo, preguntas de la comunidad y testimonios.","Primeras ofertas: clases grupales, sesiones individuales y yoga nidra.","Embudo hacia WhatsApp Business para reservas."]},
+    {fig:"f-warrior", cls:"", tag:"Opcional · mes 7 en adelante", title:"Fase 3 · Expansión", desc:"Crecer sobre lo que ya funciona, con nuevos canales y experiencias.",
+     items:["Canal de YouTube.","Página de reservas con pasarela de pago.","Retiros de medio día o día y medio.","Pauta, si los resultados lo justifican."]}
+  ];
+  const tabs = document.querySelectorAll(".tl-btn");
+  function showPhase(i){
+    const p = phases[i];
+    tabs.forEach(b => b.setAttribute("aria-selected", b.dataset.i == i));
+    $("#phasePanel").setAttribute("aria-labelledby","tab-"+i);
+    const fig = $("#phFig");
+    fig.setAttribute("class", "fig phase-fig " + p.cls);
+    fig.querySelector("use").setAttribute("href", "#" + p.fig);
+    fig.style.animation = "none"; void fig.getBoundingClientRect(); fig.style.animation = "";
+    $("#phTag").textContent = p.tag; $("#phTitle").textContent = p.title; $("#phDesc").textContent = p.desc;
+    const ul = $("#phList"); ul.innerHTML = "";
+    p.items.forEach(t => { const li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+  }
+  tabs.forEach(b => b.addEventListener("click", () => showPhase(+b.dataset.i)));
+  showPhase(0);
+
+  /* Calculator */
+  const PLANS = {esencial:{name:"Esencial", m:1200000}, crecimiento:{name:"Crecimiento", m:1600000}};
+  const state = {plan:"crecimiento", mode:"mensual", vid:0, evt:0};
+  const ARR = 900000;
+
+  document.querySelectorAll(".plan").forEach(b => b.addEventListener("click", () => {
+    state.plan = b.dataset.plan;
+    document.querySelectorAll(".plan").forEach(x => x.setAttribute("aria-checked", x === b));
+    calc();
+  }));
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    state.mode = b.dataset.mode;
+    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    calc();
+  }));
+  document.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.step;
+    state[k] = Math.max(0, Math.min(12, state[k] + (+b.dataset.d)));
+    calc();
+  }));
+  ["#ad-yt","#ad-web","#ad-pauta","#pautaInv"].forEach(s => $(s).addEventListener("input", calc));
+
+  let summaryText = "";
+  function calc(){
+    const plan = PLANS[state.plan];
+    const mensual = state.mode === "mensual";
+    const m = mensual ? plan.m : plan.m * 0.9;
+
+    let add = 0; const lines = [];
+    if ($("#ad-yt").checked){ add += 700000; lines.push("Apertura de canal de YouTube: " + fmt(700000)); }
+    const vid = state.vid * 250000; add += vid;
+    $("#vidN").textContent = state.vid; $("#vidVal").textContent = fmt(vid);
+    if (state.vid) lines.push(state.vid + " video(s) largo(s) para YouTube: " + fmt(vid));
+    if ($("#ad-web").checked){ add += 1800000; lines.push("Página de reservas con pasarela: " + fmt(1800000)); }
+    const evt = state.evt * 500000; add += evt;
+    $("#evtN").textContent = state.evt; $("#evtVal").textContent = fmt(evt);
+    if (state.evt) lines.push(state.evt + " kit(s) de difusión para evento: " + fmt(evt));
+
+    const pOn = $("#ad-pauta").checked;
+    $("#pautaRow").classList.toggle("on", pOn);
+    let fee = 0;
+    if (pOn){
+      const inv = Math.max(0, +$("#pautaInv").value || 0);
+      fee = Math.max(inv * 0.15, 400000);
+      $("#pautaVal").textContent = fmt(fee) + "/mes";
+    } else { $("#pautaVal").textContent = "—"; }
+
+    $("#monthly").textContent = fmt(m);
+    $("#planLine").textContent = "Plan " + plan.name + " · " + (mensual ? "modalidad mensual" : "compromiso semestral, 10% menos");
+    $("#arrVal").innerHTML = mensual ? "<s>" + fmt(ARR) + "</s>Gratis" : fmt(ARR) + " único";
+    $("#pautaSum").hidden = !pOn; $("#pautaSumVal").textContent = fmt(fee) + " / mes";
+    $("#addRow").hidden = !add; $("#addTotal").textContent = fmt(add);
+
+    $("#giftNote").innerHTML = mensual
+      ? "<span><b>Arranque incluido.</b> Con el plan mensual, la Fase 0 (valor " + fmt(ARR) + ") no tiene costo. Solo pagas el primer mes.</span>"
+      : "<span><b>10% menos cada mes</b> al comprometerte por 6 meses. La Fase 0 de arranque se paga una sola vez (" + fmt(ARR) + ").</span>";
+    $("#startNote").textContent = mensual
+      ? "Para empezar pagas solo el primer mes: " + fmt(m) + "."
+      : "Para empezar pagas el arranque y el primer mes: " + fmt(ARR) + " + " + fmt(m) + ".";
+
+    summaryText = "Propuesta Sanamente\n" +
+      "Plan: " + plan.name + " (" + (mensual ? "mensual" : "semestral, 10% de descuento") + ")\n" +
+      "Mensualidad: " + fmt(m) + " (mes completo por anticipado, días 1 a 5)\n" +
+      "Fase 0 de arranque: " + (mensual ? "incluida sin costo" : fmt(ARR) + " pago único") + "\n" +
+      (pOn ? "Gestión de pauta: " + fmt(fee) + " al mes (sin incluir la inversión en anuncios)\n" : "") +
+      (lines.length ? "Adicionales (pago único):\n- " + lines.join("\n- ") + "\n" : "") +
+      "Valores en COP, antes de impuestos.";
+  }
+  calc();
+
+  $("#copyBtn").addEventListener("click", () => {
+    const ta = $("#copyFallback");
+    const fallback = () => { ta.value = summaryText; ta.hidden = false; ta.focus(); ta.select(); $("#copied").textContent = "Selecciona el texto y cópialo."; };
+    try {
+      navigator.clipboard.writeText(summaryText).then(() => { ta.hidden = true; $("#copied").textContent = "Resumen copiado. Pégalo en WhatsApp."; }, fallback);
+    } catch(e){ fallback(); }
+  });
+
+  /* Remember checked steps for this viewer */
+  document.querySelectorAll(".step input").forEach(cb => {
+    try { cb.checked = localStorage.getItem("sanamente-" + cb.id) === "1"; } catch(e){}
+    cb.addEventListener("change", () => { try { localStorage.setItem("sanamente-" + cb.id, cb.checked ? "1" : "0"); } catch(e){} });
+  });
+})();
+</script>
+
+</body>
+</html>
